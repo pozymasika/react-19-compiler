@@ -1,9 +1,10 @@
+import { memo, useMemo } from "react";
 
 type Props = {
   fruitsToEmojis: (fruits: string[]) => string[];
 };
 
-const Fruits = ({ fruitsToEmojis }: Props) => {
+const Fruits = memo(({ fruitsToEmojis }: Props) => {
   console.log("rendering Fruits component...");
   const fruitsWithEmojis = [
     "Mango",
@@ -15,7 +16,7 @@ const Fruits = ({ fruitsToEmojis }: Props) => {
     "Apple",
   ];
 
-  const emojis = fruitsToEmojis(fruitsWithEmojis);
+  const emojis = useMemo(() => fruitsToEmojis(fruitsWithEmojis), [fruitsToEmojis]);
 
   return (
     <div>
@@ -27,6 +28,6 @@ const Fruits = ({ fruitsToEmojis }: Props) => {
       </ul>
     </div>
   );
-}
+})
 
 export default Fruits;

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
-const Counter = () => {
+const Counter = memo(() => {
   const [count, setCount] = useState(0);
 
   const onButtonClick = () => setCount((count) => count + 1);
@@ -13,6 +13,6 @@ const Counter = () => {
       <button onClick={onButtonClick}>count is {count}</button>
     </div>
   );
-};
+});
 
 export default Counter;

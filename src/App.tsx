@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Counter from "./Counter";
 import Fruits from "./Fruits";
 import "./App.css";
@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0);
   console.log("Rendering App component...");
 
-  const fruitsToEmojis = (fruits: string[]) => {
+  const fruitsToEmojis = useCallback((fruits: string[]) => {
     console.log("calculating emojis...");
     return fruits.map((fruit) => {
       switch (fruit) {
@@ -29,7 +29,7 @@ function App() {
           return "❓";
       }
     });
-  };
+  }, []);
 
   return (
     <main>
